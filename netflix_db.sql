@@ -46,11 +46,54 @@ SELECT * FROM netflix WHERE type = 'Movie' AND release_year = 2020;
 -- PROBLEM 4
 -- find the top 5 countries with the most content on netflix
 
-SELECT country, COUNT(show_id) as total_content FROM netflix GROUP BY 1;
+SELECT TRIM(UNNEST(STRING_TO_ARRAY(country, ','))) as new_country,
+	COUNT(show_id) as total_content
+FROM netflix GROUP BY 1 
+ORDER BY 2 DESC LIMIT 5; 
+-- US, India, UK, Canada, France
 
-SELECT STRING_TO_ARRAY(country, ',') as new_country FROM netflix
 
-SELECT UNNEST(STRING_TO_ARRAY(country, ',')) as new_country,
+-- PROBLEM 5
+-- identify the longest movie duration
+
+SELECT * FROM netflix WHERE
+	type = 'Movie' AND duration = (SELECT MAX(duration) FROM netflix)
+-- 99 min is the longest movie duration
+
+
+-- PROBLEM 6
+-- find all content added in the last 5 years
+
+SELECT * FROM netflix WHERE
+	TO_DATE(date_added, 'Month DD, YYYY') >= CURRENT_DATE - INTERVAL '5 years'
+-- 3006 movies and tv shows added in the last 5 years
+
+
+-- PROBLEM 7
+-- find all movies/tv shows by director 'Rajiv Chilaka'
+
+SELECT * FROM netflix WHERE director ILIKE '%Rajiv Chilaka%' --ILIKE makes it not case sensitive
+-- 22 movies directed by Rajiv Chilaka
+
+
+-- PROBLEM 8
+-- list all tv shows with more than 5 seasons
+
+SELECT * FROM netflix WHERE
+	type = 'TV Show' AND SPLIT_PART(duration, ' ', 1) >= '5'
+-- there are 82 tv shows with 5+ seasons
+
+
+-- PROBLEM 9
+-- count the number of content items in each genre
+
+SELECT 
+	TRIM(UNNEST(STRING_TO_ARRAY(listed_in, ','))) as genre,
 	COUNT(show_id) as total_content
 FROM netflix GROUP BY 1
+-- there's 42 different genres
+
+
+-- PROBLEM 10
+
 
