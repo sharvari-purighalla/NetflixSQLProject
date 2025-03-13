@@ -5,21 +5,21 @@ This project explores the Netflix dataset using SQL queries to extract insights 
 
 ## Guiding questions:
 
-PROBLEM 1: count the number of movies vs tv shows
-PROBLEM 2: find the most common rating for movies and tv shows
-PROBLEM 3: list all movies released in 2020
-PROBLEM 4: find the top 5 countries with the most content on netflix
-PROBLEM 5: identify the longest movie duration
-PROBLEM 6: find all content added in the last 5 years
-PROBLEM 7: find all movies/tv shows by director 'Rajiv Chilaka'
-PROBLEM 8: list all tv shows with more than 5 seasons
-PROBLEM 9: count the number of content items in each genre
-PROBLEM 10: find average amount of content released by India on netflix. return the top 5 years with highest average content released
-PROBLEM 11: list all movies that are documentaries
-PROBLEM 12: find all content without a director
-PROBLEM 13: find how many movies the actor 'Salman Khan' appeared in the last 10 years
-PROBLEM 14: find the top 10 actors who appeared in the highest number of movies produced in india
-PROBLEM 15: categorize the content based on the presence of the keywords 'kill' and 'violence' in the description field. label content containing these keywords as 'bad' and all other content as 'good'. count how many items fall into each category
+- PROBLEM 1: count the number of movies vs tv shows
+- PROBLEM 2: find the most common rating for movies and tv shows
+- PROBLEM 3: list all movies released in 2020
+- PROBLEM 4: find the top 5 countries with the most content on netflix
+- PROBLEM 5: identify the longest movie duration
+- PROBLEM 6: find all content added in the last 5 years
+- PROBLEM 7: find all movies/tv shows by director 'Rajiv Chilaka'
+- PROBLEM 8: list all tv shows with more than 5 seasons
+- PROBLEM 9: count the number of content items in each genre
+- PROBLEM 10: find average amount of content released by India on netflix. return the top 5 years with highest average content released
+- PROBLEM 11: list all movies that are documentaries
+- PROBLEM 12: find all content without a director
+- PROBLEM 13: find how many movies the actor 'Salman Khan' appeared in the last 10 years
+- PROBLEM 14: find the top 10 actors who appeared in the highest number of movies produced in india
+- PROBLEM 15: categorize the content based on the presence of the keywords 'kill' and 'violence' in the description field. label content containing these keywords as 'bad' and all other content as 'good'. count how many items fall into each category
 
 ### Key takeaways
 - Netflix has more Movies than TV Shows (6,131 vs. 2,676).
