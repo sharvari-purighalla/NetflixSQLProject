@@ -67,5 +67,5 @@ CREATE table netflix <br>
 - Analyzing Netflix’s content trends compared to competitors (Amazon Prime, Disney+).
 
 
-This project was created by **Sharvari Purighalla**. You may connect with me on linkedin @sharvari-purighalla for discussions, collaborations, or improvements!
+This project was created by **Sharvari Purighalla**. You may connect with me on linkedin @sharvari-purighalla for discussions, collaborations, or improvements! <br>
 Date: 03/11/2025
