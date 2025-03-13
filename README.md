@@ -3,6 +3,24 @@ This project explores the Netflix dataset using SQL queries to extract insights 
 
 [link to dataset: https://www.kaggle.com/datasets/shivamb/netflix-shows]
 
+### SQL table netflix:
+CREATE table netflix <br>
+( <br>
+  show_id varchar(6), <br>
+  type varchar(20), <br>
+  title varchar(150), <br>
+  director varchar(220), <br>
+  casts varchar(1000), <br>
+  country varchar(150), <br>
+  date_added varchar(50), <br>
+  release_year int, <br>
+  rating varchar(10), <br>
+  duration varchar(15), <br>
+  listed_in varchar(100), <br>
+  description varchar(250)<br>
+);<br>
+
+
 ## Guiding questions:
 
 - PROBLEM 1: count the number of movies vs tv shows
@@ -42,22 +60,6 @@ This project explores the Netflix dataset using SQL queries to extract insights 
 - **SQL (PostgreSQL)** for querying and data manipulation
 - **pgAdmin** for database management
 - **Google Sheets** for gaining an estimate of number of records per category and identifying data types.
-
-CREATE table netflix
-(
-  show_id varchar(6), 
-  type varchar(20), 
-  title varchar(150), 
-  director varchar(220), 
-  casts varchar(1000), 
-  country varchar(150), 
-  date_added varchar(50), 
-  release_year int, 
-	rating varchar(10), 
-  duration varchar(15), 
-  listed_in varchar(100), 
-  description varchar(250)
-);
 
 ### Future improvements
 - Visualizing content trends using Python, Matplotlib, or Tableau.
