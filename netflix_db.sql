@@ -95,5 +95,62 @@ FROM netflix GROUP BY 1
 
 
 -- PROBLEM 10
+-- find average amount of content released by India on netflix. return the top 5 years with highest average content released
+
+SELECT EXTRACT(YEAR FROM TO_DATE(date_added, 'Month DD, YYYY')) as date, 
+	COUNT(*), ROUND((COUNT(*)::numeric)/((SELECT COUNT(*) FROM netflix WHERE country = 'India')::numeric) * 100, 2) as avg_content_per_year
+FROM netflix
+WHERE country ILIKE '%India%' GROUP BY 1
+-- (2018: 349, 35.91%)  (2019: 218, 22.43%)  (2020: 199, 20.47%)  (2017: 162, 16.67%)  (2021: 105, 10.80%) 
 
 
+-- PROBLEM 11
+-- list all movies that are documentaries
+
+SELECT * FROM netflix WHERE listed_in ILIKE '%documentaries%'
+-- 869 movies that are documentaries
+
+
+-- PROBLEM 12
+-- find all content without a director
+
+SELECT * FROM netflix where director IS null
+-- 2634 movies and tv shows with no directors
+
+
+-- PROBLEM 13
+-- find how many movies the actor 'Salman Khan' appeared in the last 10 years
+
+SELECT * FROM netflix WHERE 
+	casts ILIKE '%Salman Khan%' 
+	AND release_year >= EXTRACT(YEAR FROM CURRENT_DATE) - 10
+-- 2 movies
+
+
+-- PROBLEM 14
+-- find the top 10 actors who appeared in the highest number of movies produced in india
+
+SELECT
+	TRIM(UNNEST(STRING_TO_ARRAY(casts, ','))) as actors,
+	COUNT(*) as total_content
+FROM netflix WHERE country ILIKE '%India%' GROUP BY 1 ORDER BY 2 DESC LIMIT 10
+-- Anupam Kher, Shah Rukh Khan, Naseeruddin Shah, Om Puri, Akshay Kumar, Amitabh Bachchan, Paresh Rawal, Boman Irani, Kareena Kapoor, Ajay Devgn
+
+
+-- PROBLEM 15
+-- categorize the content based on the presence of the keywords 'kill' and 'violence' in the description field. 
+-- label content containing these keywords as 'bad' and all other content as 'good'
+-- count how many items fall into each category
+
+WITH new_table AS (
+SELECT *, CASE 
+	WHEN 
+		description ILIKE '%kill%' 
+		OR description ILIKE '%violen%'
+		THEN 'bad_content'
+		ELSE 'good_content'
+	END category
+FROM netflix
+)
+SELECT category, COUNT(*) as total_content FROM new_table GROUP BY 1
+-- 409 'bad' and 8398 'good'
